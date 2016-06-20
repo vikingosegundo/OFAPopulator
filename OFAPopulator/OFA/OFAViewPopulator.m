@@ -235,10 +235,13 @@
 @interface OFACollectionViewPopulator : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, weak) UICollectionView    *parentView;
 @property (nonatomic, strong) NSArray *populators;
+@property (nonatomic, copy) void (^didScroll)(UIScrollView *scrollView);
+
 @end
 
 
 @implementation OFACollectionViewPopulator
+
 
 - (instancetype)initWithParentView:(UICollectionView *)tv sectionPopulators:(NSArray *)populators
 {
@@ -281,6 +284,13 @@
 {
     id<OFASectionPopulator> pop = self.populators[indexPath.section];
     return [pop collectionView:collectionView didDeselectItemAtIndexPath:indexPath];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if (self.didScroll) {
+        self.didScroll(self.parentView);
+    }
 }
 
 @end
@@ -354,6 +364,8 @@
 {    
     if ([self.privatePopulator isKindOfClass:[OFATableViewPopulator class]]) {
         [(OFATableViewPopulator *)self.privatePopulator setDidScroll:didScroll];
+    } else if ([self.privatePopulator isKindOfClass:[OFACollectionViewPopulator class]]) {
+        [(OFACollectionViewPopulator *)self.privatePopulator setDidScroll:didScroll];
     }
 }
 

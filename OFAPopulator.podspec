@@ -34,7 +34,7 @@ self.populator = [[OFAViewPopulator alloc] initWithSectionPopulators:@[sectionPo
   s.author             = { "Manuel Meyer" => "vikingosegundo@gmail.com" }
   s.social_media_url   = "http://twitter.com/vikingosegundo"
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/vikingosegundo/ofapopulator.git", :tag => "0.1.3" }
+  s.source       = { :git => "https://github.com/vikingosegundo/ofapopulator.git", :tag => "0.1.4" }
   s.source_files  = "OFAPopulator/OFA/**/*.*"
   s.public_header_files = "OFAPopulator/OFA/Header/**/*.h"
 
