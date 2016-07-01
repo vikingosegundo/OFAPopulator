@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 com.vs. All rights reserved.
 //
 
-#import "OFADataProvider.h"
+#import "OFASectionDataProvider.h"
 
-@interface ExampleDataProvider : NSObject <OFADataProvider>
+@interface ExampleDataProvider : NSObject <OFASectionDataProvider>
 
 @end

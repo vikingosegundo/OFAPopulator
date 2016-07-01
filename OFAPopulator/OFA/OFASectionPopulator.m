@@ -19,7 +19,7 @@
 @implementation OFASectionPopulator
 @synthesize dataProvider = _dataProvider;
 - (instancetype)initWithParentView:(UIView *)parentView
-                      dataProvider:(id<OFADataProvider>)dataProvider
+                      dataProvider:(id<OFASectionDataProvider>)dataProvider
                     cellIdentifier:(NSString *(^)(id obj, NSIndexPath *indexPath))cellIdentifier
                   cellConfigurator:(void (^)(id, id, NSIndexPath *))cellConfigurator
 {
@@ -114,12 +114,12 @@
     return [[[self activeTaget] class] instancesRespondToSelector: aSelector];
 }
 
--(id<OFADataProvider>)dataProvider
+-(id<OFASectionDataProvider>)dataProvider
 {
     return _dataProvider;
 }
 
--(void)setDataProvider:(id<OFADataProvider>)dataProvider
+-(void)setDataProvider:(id<OFASectionDataProvider>)dataProvider
 {
     _dataProvider = dataProvider;
 }

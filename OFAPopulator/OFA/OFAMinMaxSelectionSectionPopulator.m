@@ -7,7 +7,7 @@
 //
 
 #import "OFAMinMaxSelectionSectionPopulator.h"
-#import "OFADataProvider.h"
+#import "OFASectionDataProvider.h"
 
 
 
@@ -25,7 +25,7 @@
 -(instancetype)initWithParentView:(UIView *)parentView
                      minSelection:(NSUInteger)min
                      maxSelection:(NSUInteger)max
-                     dataProvider:(id<OFADataProvider>)dataProvider
+                     dataProvider:(id<OFASectionDataProvider>)dataProvider
                    cellIdentifier:(NSString *(^)(id, NSIndexPath *))cellIdentifier
                  cellConfigurator:(void (^)(id, id, NSIndexPath *))cellConfigurator
 {

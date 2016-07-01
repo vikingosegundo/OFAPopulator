@@ -19,7 +19,7 @@
 @synthesize header = _header;
 
 - (instancetype)initWithParentView:(UICollectionView *)parentView
-                      dataProvider:(id<OFADataProvider>)dataProvider
+                      dataProvider:(id<OFASectionDataProvider>)dataProvider
                     cellIdentifier:(NSString * (^)(id obj, NSIndexPath *indexPath))cellIdentifier
                   cellConfigurator:(void (^)(id, UICollectionViewCell *, NSIndexPath *))cellConfigurator
 {

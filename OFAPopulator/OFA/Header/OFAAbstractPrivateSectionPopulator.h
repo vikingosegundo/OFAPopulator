@@ -10,6 +10,6 @@
 #import "OFASectionPopulator.h"
 
 @interface OFAAbstractPrivateSectionPopulator : NSObject <OFASectionPopulator>
-@property (nonatomic, strong) id<OFADataProvider> dataProvider;
+@property (nonatomic, strong) id<OFASectionDataProvider> dataProvider;
 
 @end

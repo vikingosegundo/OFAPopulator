@@ -88,7 +88,7 @@
 		64DD2B501AA8FE8F00A1402D /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		64DD2B521AA904A100A1402D /* ExampleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleCollectionViewCell.h; sourceTree = "<group>"; };
 		64DD2B531AA904A100A1402D /* ExampleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleCollectionViewCell.m; sourceTree = "<group>"; };
-		64FD47021ABBABC200F16DDA /* OFADataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFADataProvider.h; sourceTree = "<group>"; };
+		64FD47021ABBABC200F16DDA /* OFASectionDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFASectionDataProvider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 				643864121AB78AEA004C84A9 /* OFASelectableCell.h */,
 				643864131AB78AEA004C84A9 /* OFATableViewSectionPopulator.h */,
 				643864141AB78AEA004C84A9 /* OFAViewPopulator.h */,
-				64FD47021ABBABC200F16DDA /* OFADataProvider.h */,
+				64FD47021ABBABC200F16DDA /* OFASectionDataProvider.h */,
 			);
 			name = Header;
 			path = OFA/Header;

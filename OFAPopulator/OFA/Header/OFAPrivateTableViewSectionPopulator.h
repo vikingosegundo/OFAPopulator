@@ -22,7 +22,7 @@
 @property (nonatomic, copy) CGFloat (^heightForCellAtIndexPath)(id obj, NSIndexPath *indexPath);
 
 - (instancetype)initWithParentView:(UITableView *)parentView
-                      dataProvider:(id<OFADataProvider>)dataProvider
+                      dataProvider:(id<OFASectionDataProvider>)dataProvider
                     cellIdentifier:(NSString * (^)(id obj, NSIndexPath *indexPath))cellIdentifier
                   cellConfigurator:(void (^)(id, UITableViewCell *, NSIndexPath *))cellConfigurator;
 

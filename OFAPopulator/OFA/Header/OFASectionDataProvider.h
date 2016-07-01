@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol OFADataProvider <NSObject>
+@protocol OFASectionDataProvider <NSObject>
 @property (nonatomic, strong) NSArray *sectionObjects;
 @end

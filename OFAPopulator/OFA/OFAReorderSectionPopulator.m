@@ -16,7 +16,7 @@
 @implementation OFAReorderSectionPopulator
 
 - (instancetype)initWithParentView:(UIView *)parentView
-                      dataProvider:(id<OFADataProvider>)dataProvider
+                      dataProvider:(id<OFASectionDataProvider>)dataProvider
                     cellIdentifier:(NSString * (^)(id obj, NSIndexPath *indexPath))cellIdentifier
                   cellConfigurator:(void (^)(id obj, id cell, NSIndexPath *indexPath))cellConfigurator
                    reorderCallBack:(void(^)(id sourceObj, id destinationObj, NSIndexPath *sourceIndexpath, NSIndexPath *destinationIndexPath))reorderCallBack;
@@ -39,7 +39,7 @@
 }
 
 -(instancetype)initWithParentView:(UIView *)parentView
-                     dataProvider:(id<OFADataProvider>)dataProvider
+                     dataProvider:(id<OFASectionDataProvider>)dataProvider
                    cellIdentifier:(NSString *(^)(id, NSIndexPath *))cellIdentifier
                  cellConfigurator:(void (^)(id, id, NSIndexPath *))cellConfigurator
 {
