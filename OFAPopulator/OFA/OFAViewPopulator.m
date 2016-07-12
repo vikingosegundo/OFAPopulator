@@ -32,9 +32,6 @@
         
         tv.dataSource = self;
         tv.delegate = self;
-        tv.allowsMultipleSelection = YES;
-        tv.allowsMultipleSelectionDuringEditing = YES;
-        [tv setEditing:YES animated:YES];
     }
     return self;
 }
@@ -165,7 +162,7 @@
 -(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<OFASectionPopulator> pop = self.populators[indexPath.section];
-    if ([pop respondsToSelector:_cmd]){
+    if ([[pop class] instancesRespondToSelector:_cmd]) {
         return [pop tableView:tableView canMoveRowAtIndexPath:indexPath];
     }
     return NO;
@@ -174,7 +171,7 @@
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     id<OFASectionPopulator> pop = self.populators[sourceIndexPath.section];
-    if ([pop respondsToSelector:_cmd]) {
+    if ([[pop class] instancesRespondToSelector:_cmd]) {
         [pop tableView:tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
     }
 
@@ -184,7 +181,7 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<OFASectionPopulator> pop = self.populators[indexPath.section];
-    if ([[pop class] instancesRespondToSelector:_cmd] ) {
+    if ([[pop class] instancesRespondToSelector:_cmd]) {
         return [pop tableView:tableView canEditRowAtIndexPath:indexPath];
     }
     return NO;
@@ -194,7 +191,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     id<OFASectionPopulator> pop = self.populators[indexPath.section];
-    if ([pop respondsToSelector:_cmd]){
+    if ([[pop class] instancesRespondToSelector:_cmd]) {
         return [pop tableView:tableView editingStyleForRowAtIndexPath:indexPath];
     }
     return UITableViewCellEditingStyleDelete;
@@ -204,7 +201,7 @@
 -(NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
     id<OFASectionPopulator> dPop = self.populators[proposedDestinationIndexPath.section];
-    if ([dPop respondsToSelector:_cmd]){
+    if ([[dPop class] instancesRespondToSelector:_cmd]) {
         return [dPop tableView:tableView targetIndexPathForMoveFromRowAtIndexPath:sourceIndexPath toProposedIndexPath:proposedDestinationIndexPath];
     }
     return sourceIndexPath;

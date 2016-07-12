@@ -31,6 +31,9 @@
     if (self) {
         NSAssert([parentView isKindOfClass:[UITableView class]], @"currently %@ only supports table views", NSStringFromClass([self class]));
         [(UITableView *)parentView setEditing:YES animated:YES];
+        [(UITableView *)parentView setAllowsMultipleSelection:NO];
+        [(UITableView *)parentView setAllowsSelection:NO];
+
         self.reorderCallBack = reorderCallBack;
         self.dataProvider = dataProvider;
     }
@@ -67,8 +70,7 @@
 }
 
 
--(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     id sObj = self.dataProvider.sectionObjects[sourceIndexPath.row];
     id dObj = self.dataProvider.sectionObjects[destinationIndexPath.row];
     self.reorderCallBack(sObj, dObj, sourceIndexPath, destinationIndexPath);
@@ -78,5 +80,13 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleNone;
 }
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setShowsReorderControl:YES];
+    return cell;
+}
+
 
 @end
