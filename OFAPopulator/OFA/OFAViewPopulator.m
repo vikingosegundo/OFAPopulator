@@ -32,7 +32,6 @@
         
         tv.dataSource = self;
         tv.delegate = self;
-//        tv.allowsMultipleSelection = YES;
         tv.allowsSelectionDuringEditing = YES;
         [tv setEditing:YES animated:YES];
     }
