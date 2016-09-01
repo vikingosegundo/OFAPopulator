@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64025B661D786B81003E1A33 /* SupplementaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64025B651D786B80003E1A33 /* SupplementaryHeaderView.xib */; };
 		643863D01AB77374004C84A9 /* OFASectionPopulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 643863BE1AB77374004C84A9 /* OFASectionPopulator.m */; };
 		643863D11AB77374004C84A9 /* OFAAbstractPrivateSectionPopulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 643863C01AB77374004C84A9 /* OFAAbstractPrivateSectionPopulator.m */; };
 		643863D21AB77374004C84A9 /* OFACollectionViewSectionPopulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 643863C21AB77374004C84A9 /* OFACollectionViewSectionPopulator.m */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64025B651D786B80003E1A33 /* SupplementaryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupplementaryHeaderView.xib; sourceTree = "<group>"; };
 		643863BE1AB77374004C84A9 /* OFASectionPopulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OFASectionPopulator.m; path = OFA/OFASectionPopulator.m; sourceTree = "<group>"; };
 		643863C01AB77374004C84A9 /* OFAAbstractPrivateSectionPopulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OFAAbstractPrivateSectionPopulator.m; path = OFA/OFAAbstractPrivateSectionPopulator.m; sourceTree = "<group>"; };
 		643863C21AB77374004C84A9 /* OFACollectionViewSectionPopulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OFACollectionViewSectionPopulator.m; path = OFA/OFACollectionViewSectionPopulator.m; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				6486FF401AAB26930032D6F0 /* ExampleTableViewCell.m */,
 				64C1222A1AAD033D0071A63F /* ExampleImageCollectionViewCell.h */,
 				64C1222B1AAD033D0071A63F /* ExampleImageCollectionViewCell.m */,
+				64025B651D786B80003E1A33 /* SupplementaryHeaderView.xib */,
 			);
 			name = ExampleApp;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				644676BF1AA50163005B456C /* Main.storyboard in Resources */,
+				64025B661D786B81003E1A33 /* SupplementaryHeaderView.xib in Resources */,
 				644676C41AA50163005B456C /* LaunchScreen.xib in Resources */,
 				644676C11AA50163005B456C /* Images.xcassets in Resources */,
 			);

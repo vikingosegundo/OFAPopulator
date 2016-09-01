@@ -17,6 +17,7 @@
 @implementation OFAPrivateCollectionViewSectionPopulator
 @synthesize objectOnCellSelected = _objectOnCellSelected;
 @synthesize header = _header;
+@synthesize supplementaryView = _supplementaryView;
 
 - (instancetype)initWithParentView:(UICollectionView *)parentView
                       dataProvider:(id<OFASectionDataProvider>)dataProvider
@@ -63,6 +64,13 @@
     if (self.objectOnCellSelected) {
         self.objectOnCellSelected([self.dataProvider sectionObjects][indexPath.row], [collectionView cellForItemAtIndexPath:indexPath], indexPath);
     }
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if(self.supplementaryView) {
+        return self.supplementaryView([self.dataProvider sectionObjects][indexPath.row], indexPath, kind);
+    }
+    return nil;
 }
 
 -(UICollectionView *)parentView

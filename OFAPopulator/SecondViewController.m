@@ -24,6 +24,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"SupplementaryHeaderView" bundle:nil]
+          forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                 withReuseIdentifier:@"header"];
 
     OFASectionPopulator *section1Populator = [[OFASectionPopulator alloc] initWithParentView:self.collectionView
                                                                                 dataProvider:[[ExampleDataProvider alloc] init]
@@ -33,6 +37,16 @@
         cell.textLabel.text = [NSString stringWithFormat:@"%@", obj];
     }];
 
+    section1Populator.supplementaryView = ^(id obj, NSIndexPath *indexPath, NSString *kind) {
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
+            UICollectionReusableView *view = [self.collectionView dequeueReusableCellWithReuseIdentifier:kind forIndexPath:indexPath];
+            return view;
+        }
+        
+        NSAssert(NO, @"illegal");
+        return [UICollectionReusableView new];
+    };
+    
     section1Populator.objectOnCellSelected = ^(id obj, UIView *cell, NSIndexPath *indexPath)
     {
         ExampleCollectionViewCell *cvc = (ExampleCollectionViewCell *)cell;

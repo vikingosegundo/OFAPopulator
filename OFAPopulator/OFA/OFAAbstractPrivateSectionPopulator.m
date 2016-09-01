@@ -19,6 +19,7 @@
 @synthesize sectionIndexTitle = _sectionIndexTitle;
 @synthesize cellIdentifier = _cellIdentifier;
 @synthesize dataProvider = _dataProvider;
+@synthesize supplementaryView = _supplementaryView;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

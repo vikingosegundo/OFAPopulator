@@ -124,5 +124,10 @@
     _dataProvider = dataProvider;
 }
 
+-(void)setSupplementaryView:(UICollectionReusableView *(^)(id, NSIndexPath *, NSString *))supplementaryView {
+    NSAssert(self.collectionViewPopulator == [self activeTaget], @"supplementaryView is only supported for UICollectionViews");
+    [[self activeTaget] setSupplementaryView:supplementaryView];
+}
+
 
 @end

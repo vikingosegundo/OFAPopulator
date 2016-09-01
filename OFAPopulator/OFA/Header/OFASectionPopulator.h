@@ -26,6 +26,8 @@
 @property (nonatomic, copy) UIView* (^header)(NSUInteger section);
 @property (nonatomic, copy) UIView* (^footer)(NSUInteger section);
 
+@property (nonatomic, copy) UICollectionReusableView* (^supplementaryView)(id obj, NSIndexPath *indexPath, NSString *kind);
+
 @property (nonatomic, weak) UIView *parentView;
 @end
 
