@@ -75,8 +75,12 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    NSAssert(self.heightForSupplementaryHeaderView != nil, @"if you implement supplementaryView, heightForSupplementaryHeaderView needs to be implemented too");
-    return CGSizeMake(0, self.heightForSupplementaryHeaderView([self.dataProvider sectionObjects][0], section));
+    
+    if (self.supplementaryView) {
+        NSAssert(self.heightForSupplementaryHeaderView != nil, @"if you implement supplementaryView, heightForSupplementaryHeaderView needs to be implemented too");
+        return CGSizeMake(0, self.heightForSupplementaryHeaderView([self.dataProvider sectionObjects][0], section));
+    }
+    return CGSizeZero;
 }
 
 -(void)setSupplementaryView:(UICollectionReusableView *(^)(id, NSIndexPath *, NSString *))supplementaryView {
