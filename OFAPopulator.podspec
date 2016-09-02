@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "OFAPopulator"
-  s.version      = "0.1.8"
+  s.version      = "0.1.9"
   s.summary      = "OFA Populator offers an easy to implement yet powerful way to populate table and collection views."
 
   s.description  = <<-DESC

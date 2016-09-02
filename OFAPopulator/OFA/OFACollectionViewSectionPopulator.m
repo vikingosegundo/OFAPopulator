@@ -19,6 +19,6 @@
 
 -(void)setHeader:(UIView *(^)(NSUInteger))headerForSection
 {
-    NSAssert(NO,@"Section tittles currently aren't supported for Collection Views");
+    NSAssert(NO,@"Section titles currently aren't supported for Collection Views");
 }
 @end

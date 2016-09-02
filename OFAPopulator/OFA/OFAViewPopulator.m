@@ -8,7 +8,7 @@
 
 #import "OFAViewPopulator.h"
 #import "OFASectionPopulator.h"
-
+#import "OFACollectionViewSectionPopulator.h"
 
 
 #pragma mark -
@@ -284,6 +284,22 @@
     id<OFASectionPopulator> pop = self.populators[indexPath.section];
     return [pop collectionView:collectionView didDeselectItemAtIndexPath:indexPath];
 }
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    id<OFASectionPopulator> pop = self.populators[indexPath.section];
+    return [pop collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    id<OFASectionPopulator> pop = self.populators[section];
+    
+    if([pop isKindOfClass:[OFACollectionViewSectionPopulator class]]) {
+        return [(OFACollectionViewSectionPopulator*)pop collectionView:collectionView layout:collectionViewLayout referenceSizeForHeaderInSection: section];
+    }
+    return CGSizeMake(0, 100);
+}
+
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     

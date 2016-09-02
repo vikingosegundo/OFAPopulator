@@ -18,6 +18,7 @@
 @synthesize objectOnCellSelected = _objectOnCellSelected;
 @synthesize header = _header;
 @synthesize supplementaryView = _supplementaryView;
+@synthesize heightForSupplementaryHeaderView = _heightForSupplementaryHeaderView;
 
 - (instancetype)initWithParentView:(UICollectionView *)parentView
                       dataProvider:(id<OFASectionDataProvider>)dataProvider
@@ -71,6 +72,15 @@
         return self.supplementaryView([self.dataProvider sectionObjects][indexPath.row], indexPath, kind);
     }
     return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    NSAssert(self.heightForSupplementaryHeaderView != nil, @"if you implement supplementaryView, heightForSupplementaryHeaderView needs to be implemented too");
+    return CGSizeMake(0, self.heightForSupplementaryHeaderView([self.dataProvider sectionObjects][0], section));
+}
+
+-(void)setSupplementaryView:(UICollectionReusableView *(^)(id, NSIndexPath *, NSString *))supplementaryView {
+    _supplementaryView =supplementaryView;
 }
 
 -(UICollectionView *)parentView
