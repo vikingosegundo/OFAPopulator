@@ -8,12 +8,21 @@
 
 @import UIKit;
 
-@interface OFATableViewPopulator : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface OFAScrollViewPopulator : NSObject <UIScrollViewDelegate>
+
+
+
+@end
+
+@interface OFATableViewPopulator : OFAScrollViewPopulator <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong, readonly) NSArray *populators;
 
 @end
 
+@interface OFACollectionViewPopulator : OFAScrollViewPopulator <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (nonatomic, strong, readonly) NSArray *populators;
 
+@end
 
 @interface OFAViewPopulator : NSProxy <UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -23,4 +32,5 @@
 - (instancetype)initWithSectionPopulators:(NSArray *)populators populatorClass:(Class)cls;
 
 @property (nonatomic, copy) void (^didScroll)(UIScrollView *scrollView);
-@end
+@property (nonatomic, copy) void (^didBeginDragging)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^didEndDragging)(UIScrollView *scrollView, BOOL decelerate);@end

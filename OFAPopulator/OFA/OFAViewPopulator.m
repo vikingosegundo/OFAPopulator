@@ -11,14 +11,23 @@
 #import "OFACollectionViewSectionPopulator.h"
 
 
+@interface OFAScrollViewPopulator ()
+@property (nonatomic, copy) void (^didScroll)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^didBeginDragging)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^didEndDragging)(UIScrollView *scrollView, BOOL decelerate);
+@end
+
+@implementation OFAScrollViewPopulator
+
+@end
+
 #pragma mark -
 
 @interface OFATableViewPopulator ()
 @property (nonatomic, weak) UITableView    *parentView;
-@property (nonatomic, strong) NSArray *populators;
-@property (nonatomic, assign) NSUInteger currentSection;
+@property (nonatomic, strong) NSArray      *populators;
+@property (nonatomic, assign) NSUInteger    currentSection;
 
-@property (nonatomic, copy) void (^didScroll)(UIScrollView *scrollView);
 
 @end
 
@@ -222,6 +231,18 @@
     }
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if(self.didBeginDragging) {
+        self.didBeginDragging(self.parentView);
+    }
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(self.didEndDragging){
+        self.didEndDragging(self.parentView, decelerate);
+    }
+}
 
 
 @end
@@ -231,10 +252,8 @@
 
 #pragma mark -
 
-@interface OFACollectionViewPopulator : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface OFACollectionViewPopulator ()
 @property (nonatomic, weak) UICollectionView    *parentView;
-@property (nonatomic, strong) NSArray *populators;
-@property (nonatomic, copy) void (^didScroll)(UIScrollView *scrollView);
 
 @end
 
@@ -308,6 +327,19 @@
     }
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if(self.didBeginDragging) {
+        self.didBeginDragging(self.parentView);
+    }
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(self.didEndDragging){
+        self.didEndDragging(self.parentView, decelerate);
+    }
+}
+
 @end
 
 
@@ -377,10 +409,20 @@
 
 -(void)setDidScroll:(void (^)(UIScrollView *))didScroll
 {    
-    if ([self.privatePopulator isKindOfClass:[OFATableViewPopulator class]]) {
-        [(OFATableViewPopulator *)self.privatePopulator setDidScroll:didScroll];
-    } else if ([self.privatePopulator isKindOfClass:[OFACollectionViewPopulator class]]) {
-        [(OFACollectionViewPopulator *)self.privatePopulator setDidScroll:didScroll];
+    if ([self.privatePopulator isKindOfClass:[OFAScrollViewPopulator class]]) {
+        [(OFAScrollViewPopulator *)self.privatePopulator setDidScroll:didScroll];
+    }
+}
+
+-(void) setDidBeginDragging:(void (^)(UIScrollView *))didBeginDragging {
+    if ([self.privatePopulator isKindOfClass:[OFAScrollViewPopulator class]]) {
+        [(OFAScrollViewPopulator *)self.privatePopulator setDidBeginDragging:didBeginDragging];
+    }
+}
+
+-(void) setDidEndDragging:(void (^)(UIScrollView *, BOOL decelerate))didEndDragging {
+    if ([self.privatePopulator isKindOfClass:[OFAScrollViewPopulator class]]) {
+        [(OFAScrollViewPopulator *)self.privatePopulator setDidEndDragging:didEndDragging];
     }
 }
 
