@@ -352,6 +352,10 @@
 
 @implementation OFAViewPopulator
 
+@dynamic didEndDragging;
+@dynamic didBeginDragging;
+@dynamic didScroll;
+
 - (instancetype)initWithSectionPopulators:(NSArray *)populators populatorClass:(Class)cls
 {
     NSAssert(cls, @"populatorClass must not be Nil");
@@ -425,7 +429,5 @@
         [(OFAScrollViewPopulator *)self.privatePopulator setDidEndDragging:didEndDragging];
     }
 }
-
-
 
 @end
