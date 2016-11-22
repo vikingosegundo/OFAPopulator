@@ -37,15 +37,6 @@
         cell.textLabel.text = [NSString stringWithFormat:@"%@", obj];
     }];
 
-    section1Populator.supplementaryView = ^(id obj, NSIndexPath *indexPath, NSString *kind) {
-        if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
-            UICollectionReusableView *view = [self.collectionView dequeueReusableCellWithReuseIdentifier:kind forIndexPath:indexPath];
-            return view;
-        }
-        
-        NSAssert(NO, @"illegal");
-        return [UICollectionReusableView new];
-    };
     
     section1Populator.objectOnCellSelected = ^(id obj, UIView *cell, NSIndexPath *indexPath)
     {

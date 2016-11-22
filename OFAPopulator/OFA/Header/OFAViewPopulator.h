@@ -15,12 +15,12 @@
 @end
 
 @interface OFATableViewPopulator : OFAScrollViewPopulator <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong, readonly) NSArray *populators;
+@property (nonatomic, readonly) NSArray *populators;
 
 @end
 
 @interface OFACollectionViewPopulator : OFAScrollViewPopulator <UICollectionViewDelegate, UICollectionViewDataSource>
-@property (nonatomic, strong, readonly) NSArray *populators;
+@property (nonatomic, readonly) NSArray *populators;
 
 @end
 

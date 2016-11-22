@@ -347,7 +347,7 @@
 
 @interface OFAViewPopulator ()
 
-@property (nonatomic, strong) id privatePopulator;
+@property (nonatomic) id privatePopulator;
 @end
 
 @implementation OFAViewPopulator
@@ -365,14 +365,12 @@
         return nil;
     }
     UIView *parentView = [sectionParentView anyObject];
-    if (self) {
-        if ([parentView isKindOfClass:[UITableView class]]) {
-            self.privatePopulator = [[cls alloc] initWithParentView:(UITableView *)parentView
-                                                                    sectionPopulators:populators];
-        } else if ([parentView isKindOfClass:[UICollectionView class]]) {
-            self.privatePopulator = [[cls alloc] initWithParentView:(UICollectionView *)parentView
-                                                                         sectionPopulators:populators];
-        }
+    if ([parentView isKindOfClass:[UITableView class]]) {
+        self.privatePopulator = [[cls alloc] initWithParentView:(UITableView *)parentView
+                                              sectionPopulators:populators];
+    } else if ([parentView isKindOfClass:[UICollectionView class]]) {
+        self.privatePopulator = [[cls alloc] initWithParentView:(UICollectionView *)parentView
+                                              sectionPopulators:populators];
     }
     return self;
 }
@@ -389,12 +387,10 @@
     
     Class populatorClass;
     
-    if (self) {
-        if ([parentView isKindOfClass:[UITableView class]]) {
-            populatorClass = [OFATableViewPopulator class];
-        } else if ([parentView isKindOfClass:[UICollectionView class]]) {
-            populatorClass = [OFACollectionViewPopulator class];
-        }
+    if ([parentView isKindOfClass:[UITableView class]]) {
+        populatorClass = [OFATableViewPopulator class];
+    } else if ([parentView isKindOfClass:[UICollectionView class]]) {
+        populatorClass = [OFACollectionViewPopulator class];
     }
     return [self initWithSectionPopulators:populators populatorClass:populatorClass];
 }
